@@ -11,10 +11,13 @@
 #include "Structures.h"
 #include "OBJLoader.h"
 #include "Debug.h"
+#include "Timer.h"
 
 #include <vector>
 
 #include "GameObject.h"
+
+#define FPS60 1.0f/60.0f
 
 using namespace DirectX;
 
@@ -57,6 +60,10 @@ private:
 	Light basicLight;
 
 	MeshData _objMeshData;
+	
+	Timer* _timer;
+	float DeltaTime;
+
 	vector<GameObject*> _gameObjects;
 
 	Camera * _camera = nullptr;

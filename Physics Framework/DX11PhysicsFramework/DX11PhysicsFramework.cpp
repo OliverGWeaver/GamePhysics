@@ -474,6 +474,8 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 
 	_camera = new Camera(eye, at, up, (float)_WindowWidth, (float)_WindowHeight, 0.01f, 200.0f);
 
+	_timer = new Timer;
+
 	// Setup the scene's light
 	basicLight.AmbientLight = XMFLOAT4(0.2f, 0.2f, 0.2f, 1.0f);
 	basicLight.DiffuseLight = XMFLOAT4(0.6f, 0.6f, 0.6f, 1.0f);
@@ -583,12 +585,7 @@ DX11PhysicsFramework::~DX11PhysicsFramework()
 
 void DX11PhysicsFramework::Update()
 {
-	//Static initializes this value only once    
-	static ULONGLONG frameStart = GetTickCount64();
-
-	ULONGLONG frameNow = GetTickCount64();
-	float deltaTime = (frameNow - frameStart) / 1000.0f;
-	frameStart = frameNow;
+	float deltaTime = _timer->GetDeltaTime();
 
 	static float simpleCount = 0.0f;
 	simpleCount += deltaTime;
@@ -623,12 +620,23 @@ void DX11PhysicsFramework::Update()
 	_camera->SetPosition(cameraPos);
 	_camera->Update();
 
-	// Update objects
-	for (auto gameObject : _gameObjects)
+
+	_timer->Tick();
+	static float accumulator = 0.0f;
+	accumulator += deltaTime;
+	while (accumulator >= FPS60)
 	{
-		gameObject->Update(deltaTime);
+		// Update objects
+		for (auto gameObject : _gameObjects)
+		{
+			gameObject->Update(deltaTime);
+		}
+		std::string DebugOut;
+		DebugOut = std::to_string(accumulator);
+		OutputDebugStringA(DebugOut.c_str());
+		debugClass.DebugPrintF("deltaTime is %f \n the number is %i \n", deltaTime, 2);
+		accumulator = -FPS60;
 	}
-	debugClass.Update();
 }
 
 void DX11PhysicsFramework::Draw()

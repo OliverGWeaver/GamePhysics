@@ -4,15 +4,23 @@ Debug::Debug()
 Debug::~Debug()
 {}
 
-void Debug::Update()
+int Debug::VDebugPrintF(const char* format, va_list args)
 {
-	static int x = 0;
+	const UINT32 Maxchars = 1024;
+	static char s_buffer[Maxchars];
 
-	char sz[1024] = { 0 };
+	int Charswritten = vsnprintf(s_buffer, Maxchars, format, args);
+	OutputDebugStringA(s_buffer);
 
-	sprintf_s(sz, "the number is %d \n", x);
+	return Charswritten;
+}
+int Debug::DebugPrintF(const char* format, ...)
+{
+	va_list argList;
+	va_start(argList, format);
 
-	OutputDebugStringA(sz);
+	int charsWritten = VDebugPrintF(format, argList);
+	va_end(argList);
 
-	x++;
+	return charsWritten;
 }

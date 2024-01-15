@@ -537,6 +537,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	gameObject->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 	gameObject->GetTransform()->SetPosition(-5.0f, 0.5f, 10.0f);
 	gameObject->SetTextureRV(_StoneTextureRV);
+	
 	_gameObjects.push_back(gameObject);
 
 	return S_OK;
@@ -607,6 +608,8 @@ void DX11PhysicsFramework::Update()
 	{
 		_gameObjects[2]->GetTransform()->Move(Vector(0, 0, 0.02f));
 	}
+	_gameObjects[3]->GetPhysics()->SetVelocity(0, 10, 0);
+	_gameObjects[4]->GetPhysics()->SetAcceleration(0, 100, 0);
 	// Update camera
 	float angleAroundZ = XMConvertToRadians(_cameraOrbitAngleXZ);
 

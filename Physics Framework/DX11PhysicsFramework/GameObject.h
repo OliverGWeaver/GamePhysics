@@ -5,6 +5,7 @@
 #include <string>
 #include "Vector.h"
 #include "Transform.h"
+#include "PhysicsModel.h"
 
 using namespace DirectX;
 using namespace std;
@@ -45,10 +46,12 @@ public:
 	Material GetMaterial() const { return _material; }
 	XMMATRIX GetWorldMatrix() const { return XMLoadFloat4x4(&_world); }
 	Transform* GetTransform() { return _transform; }
+	PhysicsModel* GetPhysics() { return _physics; }
 
 	void SetTextureRV(ID3D11ShaderResourceView * textureRV) { _textureRV = textureRV; }
 	ID3D11ShaderResourceView* const* GetTextureRV() { return &_textureRV; }
 	bool HasTexture() const { return _textureRV ? true : false; }
+
 
 	void Update(float dt);
 	void Draw(ID3D11DeviceContext * pImmediateContext);
@@ -62,6 +65,7 @@ private:
 	Geometry _geometry;
 	Material _material;
 	Transform* _transform;
+	PhysicsModel* _physics;
 
 	ID3D11ShaderResourceView* _textureRV = nullptr;
 };

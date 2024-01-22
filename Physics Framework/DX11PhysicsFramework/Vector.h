@@ -12,6 +12,14 @@ public:
 	Vector Cross(Vector a,Vector b);
 	Vector Normal(Vector a);
 	float Mag(Vector a);
+	Vector operator+(const Vector& b)
+	{
+		Vector total;
+		total.x = this->x + b.x;
+		total.y = this->y + b.y;
+		total.z = this->z + b.z;
+		return total;
+	}
 
 	float x;
 	float y;

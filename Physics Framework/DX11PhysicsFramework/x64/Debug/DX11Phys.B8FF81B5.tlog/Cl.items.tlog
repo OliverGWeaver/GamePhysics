@@ -1,4 +1,5 @@
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\appearance.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\appearance.obj
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\Collider.obj
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Debug.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\Debug.obj
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\DX11PhysicsFramework.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\DX11PhysicsFramework.obj
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Camera.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\Camera.obj
@@ -8,6 +9,8 @@ C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFram
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\OBJLoader.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\OBJLoader.obj
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\ParticleModel.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\ParticleModel.obj
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\PhysicsModel.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\PhysicsModel.obj
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Rigidbody.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\Rigidbody.obj
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\SphereCollider.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\SphereCollider.obj
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Timer.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\Timer.obj
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Transform.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\Transform.obj
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Vector.cpp;C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\x64\Debug\Vector.obj

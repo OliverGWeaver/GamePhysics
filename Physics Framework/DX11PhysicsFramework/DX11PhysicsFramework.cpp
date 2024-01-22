@@ -594,19 +594,19 @@ void DX11PhysicsFramework::Update()
 	// Move gameobjects
 	if (GetAsyncKeyState('1'))
 	{
-		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, -1.0f));
+		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, -5.0f));
 	}
 	if (GetAsyncKeyState('2'))
 	{
-		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, 2.0f));
+		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, 5.0f));
 	}
 	if (GetAsyncKeyState('3'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, -2.0f));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, -5.0f));
 	}
 	if (GetAsyncKeyState('4'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, 2.0f));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, 5.0f));
 	}
 
 	// Update camera
@@ -639,6 +639,7 @@ void DX11PhysicsFramework::Update()
 		debugClass.DebugPrintF("deltaTime is %f \n the number is %i \n", deltaTime, 2);
 		accumulator = -FPS60;
 	}
+	debugClass.DebugPrintF("Velocity is %f \n",_gameObjects[1]->GetPhysics()->GetVelocity().z);
 }
 
 void DX11PhysicsFramework::Draw()

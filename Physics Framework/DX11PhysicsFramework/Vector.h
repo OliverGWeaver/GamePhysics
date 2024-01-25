@@ -20,6 +20,14 @@ public:
 		total.z = this->z + b.z;
 		return total;
 	}
+	Vector operator+=(const Vector& b)
+	{
+		Vector total;
+		total.x = this->x + b.x;
+		total.y = this->y + b.y;
+		total.z = this->z + b.z;
+		return total;
+	}
 
 	float x;
 	float y;

@@ -2,7 +2,7 @@
 
 #pragma once
 class SphereCollider;
-class Collider
+class Collider abstract
 {
 protected:
 	Transform* _tf;

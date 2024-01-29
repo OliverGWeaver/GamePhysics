@@ -30,6 +30,7 @@ void PhysicsModel::Update(float deltaTime)
 	_netforce.x -= FrictionForce(_netforce.x);
 	_netforce.y -= FrictionForce(_netforce.y);
 	_netforce.z -= FrictionForce(_netforce.z);
+
 	_acceleration.x += _netforce.x / _mass;
 	_acceleration.y += _netforce.y / _mass;
 	_acceleration.z += _netforce.z / _mass;
@@ -44,4 +45,16 @@ void PhysicsModel::Update(float deltaTime)
 	_transform->SetPosition(position);
 	_netforce = Vector(0, 0, 0);
 	_acceleration = Vector(0, 0, 0);
+	if (_velocity.x <= 0.1 && _velocity.x >= -0.1)
+	{
+		_velocity.x = 0.0f;
+	}
+	if (_velocity.y <= 0.1 && _velocity.y >= -0.1)
+	{
+		_velocity.y = 0.0f;
+	}
+	if (_velocity.z <= 0.1 && _velocity.z >= -0.1)
+	{
+		_velocity.z = 0.0f;
+	}
 }

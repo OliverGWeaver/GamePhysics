@@ -36,7 +36,6 @@
     <ClInclude Include="ParticleModel.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Collider.h" />
-    <ClInclude Include="SphereCollider.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX11PhysicsFramework.cpp" />
@@ -58,7 +57,6 @@
     <ClCompile Include="ParticleModel.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Collider.cpp" />
-    <ClCompile Include="SphereCollider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

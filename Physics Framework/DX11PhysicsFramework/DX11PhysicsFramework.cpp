@@ -519,6 +519,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	gameObject->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	gameObject->GetTransform()->SetScale(15.0f, 15.0f, 15.0f);
 	gameObject->GetTransform()->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
+	gameObject->GetPhysics()->SetCollider(new SphereCollider(gameObject->GetTransform(), 1.0f));
 	gameObject->SetTextureRV(_GroundTextureRV);
 
 	_gameObjects.push_back(gameObject);
@@ -529,7 +530,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 		gameObject->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 		gameObject->GetTransform()->SetPosition(-2.0f + (i * 2.5f), 1.0f, 10.0f);
 		gameObject->SetTextureRV(_StoneTextureRV);
-		gameObject->GetPhysics()->SetCollider(new SphereCollider(gameObject->GetTransform(), 1.0f));
+		gameObject->GetPhysics()->SetCollider( new SphereCollider(gameObject->GetTransform(), 1.0f));
 		_gameObjects.push_back(gameObject);
 	}
 
@@ -594,20 +595,24 @@ void DX11PhysicsFramework::Update()
 	// Move gameobjects
 	if (GetAsyncKeyState('1'))
 	{
-		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, -5.0f));
+		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, -1.0f));
 	}
 	if (GetAsyncKeyState('2'))
 	{
-		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, 5.0f));
+		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, 1.0f));
 	}
 	if (GetAsyncKeyState('3'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, -5.0f));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, -1.0f));
 	}
 	if (GetAsyncKeyState('4'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, 5.0f));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, 1.0f));
+	}	if (GetAsyncKeyState('5'))
+	{
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(-1.0, 0, 0));
 	}
+
 
 	// Update camera
 	float angleAroundZ = XMConvertToRadians(_cameraOrbitAngleXZ);
@@ -631,16 +636,18 @@ void DX11PhysicsFramework::Update()
 		// Update objects
 		for (auto gameObject : _gameObjects)
 		{
-			gameObject->Update(deltaTime);
+			gameObject->Update(accumulator);
 		}
-		std::string DebugOut;
-		DebugOut = std::to_string(accumulator);
-		OutputDebugStringA(DebugOut.c_str());
-		debugClass.DebugPrintF("deltaTime is %f \n the number is %i \n", deltaTime, 2);
 		accumulator = -FPS60;
+		if (_gameObjects[1]->GetPhysics()->IsCollideable() && _gameObjects[2]->GetPhysics()->IsCollideable())
+		{
+			if(_gameObjects[1]->GetPhysics()->GetCollider()->CollidesWith(*_gameObjects[2]->GetPhysics()->GetCollider()))
+				debugClass.DebugPrintF("collide\n");
+		}
 	}
-	debugClass.DebugPrintF("Velocity is %f \n",_gameObjects[1]->GetPhysics()->GetVelocity().z);
+		
 }
+	
 
 void DX11PhysicsFramework::Draw()
 {

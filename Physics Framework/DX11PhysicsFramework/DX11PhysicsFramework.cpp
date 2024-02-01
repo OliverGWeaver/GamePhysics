@@ -519,7 +519,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	gameObject->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	gameObject->GetTransform()->SetScale(15.0f, 15.0f, 15.0f);
 	gameObject->GetTransform()->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
-	gameObject->GetPhysics()->SetCollider(new SphereCollider(gameObject->GetTransform(), 1.0f));
+	//gameObject->GetPhysics()->SetCollider(new SphereCollider(gameObject->GetTransform(), 1.0f));
 	gameObject->SetTextureRV(_GroundTextureRV);
 
 	_gameObjects.push_back(gameObject);
@@ -610,7 +610,7 @@ void DX11PhysicsFramework::Update()
 		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, 1.0f));
 	}	if (GetAsyncKeyState('5'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(-1.0, 0, 0));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(-0.1, 0, 0));
 	}
 
 
@@ -633,17 +633,29 @@ void DX11PhysicsFramework::Update()
 	accumulator += deltaTime;
 	while (accumulator >= FPS60)
 	{
-		// Update objects
-		for (auto gameObject : _gameObjects)
+	if (_gameObjects[1]->GetPhysics()->IsCollideable() && _gameObjects[2]->GetPhysics()->IsCollideable())
 		{
-			gameObject->Update(accumulator);
-		}
-		accumulator = -FPS60;
-		if (_gameObjects[1]->GetPhysics()->IsCollideable() && _gameObjects[2]->GetPhysics()->IsCollideable())
-		{
-			if(_gameObjects[1]->GetPhysics()->GetCollider()->CollidesWith(*_gameObjects[2]->GetPhysics()->GetCollider()))
+			if (_gameObjects[1]->GetPhysics()->GetCollider()->CollidesWith(*_gameObjects[2]->GetPhysics()->GetCollider()))
+			{
 				debugClass.DebugPrintF("collide\n");
-		}
+				Vector CollisionNorm = _gameObjects[1]->GetTransform()->GetPosition() - _gameObjects[2]->GetTransform()->GetPosition();
+				CollisionNorm = CollisionNorm.Normal(CollisionNorm);
+				float coRest = 0.78;
+				Vector RelVelocity = _gameObjects[1]->GetPhysics()->GetVelocity() - _gameObjects[2]->GetPhysics()->GetVelocity();
+				float vj = -(1 + coRest) * CollisionNorm.Dot(CollisionNorm, RelVelocity);
+				float J = vj * (1 / _gameObjects[1]->GetPhysics()->GetMass() + 1 / _gameObjects[2]->GetPhysics()->GetMass());
+				_gameObjects[1]->GetPhysics()->ApllyImpulse(CollisionNorm * (1 / _gameObjects[1]->GetPhysics()->GetMass()) * J);
+				_gameObjects[2]->GetPhysics()->ApllyImpulse(CollisionNorm * -(1 / _gameObjects[2]->GetPhysics()->GetMass()) * J);
+				debugClass.DebugPrintF("%f\n",_gameObjects[1]->GetPhysics()->GetVelocity().x);
+			}
+		}		
+	// Update objects
+	for (auto gameObject : _gameObjects)
+	{
+		gameObject->Update(accumulator);
+		
+	}
+	accumulator = -FPS60;
 	}
 		
 }

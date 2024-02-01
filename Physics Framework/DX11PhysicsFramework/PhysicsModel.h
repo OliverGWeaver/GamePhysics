@@ -42,5 +42,7 @@ public:
 	virtual bool IsCollideable() const { return _collider != nullptr; }
 	virtual Collider* GetCollider() const { return _collider;}
 	virtual void  SetCollider(Collider* col) { _collider = col; }
+	virtual void ApllyImpulse(Vector impulse) { _velocity =_velocity + impulse; }
+	virtual float GetMass() { return _mass; }
 };
 

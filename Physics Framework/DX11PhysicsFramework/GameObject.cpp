@@ -4,7 +4,7 @@ GameObject::GameObject(string type, Geometry geometry, Material material) : _geo
 {
 	_parent = nullptr;
 	_transform = new Transform();
-	_physics = new Rigidbody(_transform);
+	_physics = new Rigidbody(_transform,2.0f);
 	_textureRV = nullptr;
 }
 

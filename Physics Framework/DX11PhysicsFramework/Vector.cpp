@@ -15,6 +15,7 @@ float Vector::Dot(Vector a, Vector b)
 	Vector LHS=a.Normal(a);
 	Vector RHS=b.Normal(b);
 	float dot = ((LHS.x * RHS.x) + (LHS.y * RHS.y) + (LHS.z + RHS.z));
+
 	return dot;
 }
 Vector Vector::Cross(Vector a, Vector b)

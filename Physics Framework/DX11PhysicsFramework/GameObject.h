@@ -56,7 +56,7 @@ public:
 
 	void Update(float dt);
 	void Draw(ID3D11DeviceContext * pImmediateContext);
-
+	float _rad;
 private:
 	GameObject* _parent = nullptr;
 

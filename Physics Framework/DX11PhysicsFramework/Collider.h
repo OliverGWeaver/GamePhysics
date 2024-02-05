@@ -32,6 +32,7 @@ public:
 		return(distance < combinedRad );}
 	/*virtual bool CollidesWith(PlaneCollider& other) override; */
 	float CheckRadius() const { return _rad; }
+	
 };
 
 //class PlaneCollider : public Collider

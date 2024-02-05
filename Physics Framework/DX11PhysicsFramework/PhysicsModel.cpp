@@ -45,16 +45,5 @@ void PhysicsModel::Update(float deltaTime)
 	_transform->SetPosition(position);
 	_netforce = Vector(0, 0, 0);
 	_acceleration = Vector(0, 0, 0);
-	if (_velocity.x <= 0.1 && _velocity.x >= -0.1)
-	{
-		_velocity.x = 0.0f;
-	}
-	if (_velocity.y <= 0.1 && _velocity.y >= -0.1)
-	{
-		_velocity.y = 0.0f;
-	}
-	if (_velocity.z <= 0.1 && _velocity.z >= -0.1)
-	{
-		_velocity.z = 0.0f;
-	}
+
 }

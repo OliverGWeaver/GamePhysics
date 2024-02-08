@@ -12,9 +12,8 @@ float Vector::Mag(Vector a)
 }
 float Vector::Dot(Vector a, Vector b)
 {
-	Vector LHS=a.Normal(a);
-	Vector RHS=b.Normal(b);
-	float dot = ((LHS.x * RHS.x) + (LHS.y * RHS.y) + (LHS.z + RHS.z));
+
+	float dot = ((a.x * b.x) + (a.y * b.y) + (a.z + b.z));
 
 	return dot;
 }
@@ -29,6 +28,8 @@ Vector Vector::Cross(Vector a, Vector b)
 Vector Vector::Normal(Vector a)
 {
 	float mag = a.Mag(a);
+	if (mag == 0)
+		return Vector(0, 0, 0);
 	Vector norm;
 	norm.x = a.x / mag;
 	norm.y = a.y / mag;

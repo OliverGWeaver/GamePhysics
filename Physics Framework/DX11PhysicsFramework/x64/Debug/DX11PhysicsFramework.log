@@ -1,3 +1,12 @@
 ﻿  DX11PhysicsFramework.cpp
 C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\DX11PhysicsFramework.cpp(84,75): warning C4100: 'nCmdShow': unreferenced formal parameter
+C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\DX11PhysicsFramework.cpp(534,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  GameObject.cpp
+  Main.cpp
+  ParticleModel.cpp
+  PhysicsModel.cpp
+  Rigidbody.cpp
+  Generating Code...
+C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\PhysicsModel.h(40): warning C4715: 'PhysicsModel::DragForce': not all control paths return a value
+C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\PhysicsModel.h(40): warning C4715: 'PhysicsModel::DragForce': not all control paths return a value
   DX11PhysicsFramework.vcxproj -> C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\x64\Debug\DX11PhysicsFramework.exe

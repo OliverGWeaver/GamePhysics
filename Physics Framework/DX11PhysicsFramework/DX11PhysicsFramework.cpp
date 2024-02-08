@@ -531,6 +531,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 		gameObject->GetTransform()->SetPosition(-2.0f + (i * 2.5f), 1.0f, 10.0f);
 		gameObject->SetTextureRV(_StoneTextureRV);
 		gameObject->GetPhysics()->SetCollider( new SphereCollider(gameObject->GetTransform(), 1.0f));
+		gameObject->GetPhysics()->SetMass(5 + 2 * i);
 		gameObject->_rad = 1.0f;
 		_gameObjects.push_back(gameObject);
 	}
@@ -641,18 +642,18 @@ void DX11PhysicsFramework::Update()
 				debugClass.DebugPrintF("collide\n");
 				Vector CollisionNorm = _gameObjects[1]->GetTransform()->GetPosition() - _gameObjects[2]->GetTransform()->GetPosition();
 				CollisionNorm = CollisionNorm.Normal(CollisionNorm);
-				float depth = _gameObjects[2]->GetTransform()->GetPosition().Mag(_gameObjects[1]->GetTransform()->GetPosition() - _gameObjects[2]->GetTransform()->GetPosition()) - (_gameObjects[2]->_rad + _gameObjects[1]->_rad);
+				float depth = _gameObjects[1]->GetTransform()->GetPosition().Mag(_gameObjects[2]->GetTransform()->GetPosition() - _gameObjects[1]->GetTransform()->GetPosition()) - (_gameObjects[2]->_rad + _gameObjects[1]->_rad);
 				float coRest = 0.89;
-				CollisionNorm =CollisionNorm * depth;
-				float invMassA = depth / _gameObjects[1]->GetPhysics()->GetMass();
-				float invMassB = -depth / _gameObjects[2]->GetPhysics()->GetMass();
+				float invMassA = 1 / _gameObjects[1]->GetPhysics()->GetMass();
+				float invMassB = 1 / _gameObjects[2]->GetPhysics()->GetMass();
 				Vector RelVelocity = _gameObjects[1]->GetPhysics()->GetVelocity() - _gameObjects[2]->GetPhysics()->GetVelocity();
-				float vj = -(1 + coRest) * CollisionNorm.Dot(CollisionNorm, RelVelocity);
-				float J = vj / (invMassA + invMassB);
-				debugClass.DebugPrintF("%f\n",CollisionNorm.x * (invMassA * J));
-				debugClass.DebugPrintF("%f\n", CollisionNorm.x * (invMassB * J));
+				float vj = -(1 + coRest) * CollisionNorm.Dot( RelVelocity,CollisionNorm);
+				float J = vj/ (invMassA + invMassB);
+				debugClass.DebugPrintF("%f\n",J);
+				_gameObjects[1]->GetPhysics()->ApllyImpulse(CollisionNorm * (invMassA * J)*-depth);
 				_gameObjects[1]->GetPhysics()->ApllyImpulse(CollisionNorm * (invMassA * J));
-				_gameObjects[2]->GetPhysics()->ApllyImpulse(CollisionNorm * (invMassB * J));
+				_gameObjects[2]->GetPhysics()->ApllyImpulse(CollisionNorm * (-invMassB * J)*-depth);
+				_gameObjects[2]->GetPhysics()->ApllyImpulse(CollisionNorm * (-invMassB * J));
 				
 				debugClass.DebugPrintF("%f\n",depth);
 			}

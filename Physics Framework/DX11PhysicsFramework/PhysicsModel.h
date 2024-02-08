@@ -44,5 +44,6 @@ public:
 	virtual void  SetCollider(Collider* col) { _collider = col; }
 	virtual void ApllyImpulse(Vector impulse) { _velocity =_velocity + impulse; }
 	virtual float GetMass() { return _mass; }
+	virtual void SetMass(float a) { _mass = a; }
 };
 

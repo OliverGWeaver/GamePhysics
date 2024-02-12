@@ -2,6 +2,7 @@
 #include <cstring>
 #include <d3d11.h>
 #include <directxmath.h>
+#include <math.h>
 
 using namespace DirectX;
 
@@ -56,3 +57,4 @@ struct MeshData
 	UINT VBOffset;
 	UINT IndexCount;
 };
+#define M_PI 3.14159265358979323846

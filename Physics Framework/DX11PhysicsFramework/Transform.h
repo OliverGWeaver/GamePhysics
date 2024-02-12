@@ -2,7 +2,7 @@
 #include <d3d11_1.h>
 #include <d3dcompiler.h>
 #include <directxmath.h>
-#include "Vector.h"
+#include "Quaternion.h"
 #pragma once
 class Transform
 {
@@ -18,15 +18,17 @@ public:
 
 	Vector GetScale() const { return _scale; }
 
-	void SetRotation(Vector rotation) { _rotation = rotation; }
-	void SetRotation(float x, float y, float z) { _rotation.x = x; _rotation.y = y; _rotation.z = z; }
+	void SetRotation(Vector rotation) { _qRotation = MakeQFromEulerAngles(rotation.x,rotation.y,rotation.z); }
+	void SetRotation(float x, float y, float z) { _qRotation = MakeQFromEulerAngles(x,y,z); }
+	void SetOrientation(Quaternion rotation) { _qRotation = rotation; }
 
-	Vector GetRotation() const { return _rotation; }
+	Vector GetRotation() const { return MakeEulerAnglesFromQ(_qRotation); }
+	Quaternion GetOrientation() const { return _qRotation; }
 
 	void Move(Vector direction);
 protected:
 	Vector _position;
-	Vector _rotation;
+	Quaternion _qRotation;
 	Vector _scale;
 };
 

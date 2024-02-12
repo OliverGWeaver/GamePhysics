@@ -28,7 +28,6 @@ void PhysicsModel::Update(float deltaTime)
 	_netforce.y += DragForce(_velocity.y);
 	_netforce.z += DragForce(_velocity.z);
 	_netforce.x -= FrictionForce(_netforce.x);
-	_netforce.y -= FrictionForce(_netforce.y);
 	_netforce.z -= FrictionForce(_netforce.z);
 
 	_acceleration.x += _netforce.x / _mass;

@@ -3,6 +3,9 @@
 #include <d3d11_1.h>
 #include <d3dcompiler.h>
 #include <directxmath.h>
+
+float const tol = 0.0001f;
+
 class Vector
 {
 public:	
@@ -51,6 +54,13 @@ public:
 		total.y = this->y * b;
 		total.z = this->z * b;
 		return total;
+	}
+	Vector operator/(const float b)
+	{
+		this->x /= b;
+		this->y /= b;
+		this->z /= b;
+		return *this;
 	}
 
 	float x;

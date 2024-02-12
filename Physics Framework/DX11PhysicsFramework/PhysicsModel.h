@@ -18,7 +18,7 @@ protected:
 	float _dragCo = 1.05f;
 	float _airDensity = 1.204f;
 	float _area = 1.0f;
-	float _frictionCo = 0.4f;
+	float _frictionCo = 0.65f;
 public:
 	PhysicsModel()= default;
 	PhysicsModel(Transform* transform);
@@ -35,9 +35,9 @@ public:
 	virtual void AddForce(float x, float y, float z) { _netforce.x += x; _netforce.y += y; _netforce.z += z; }
 	virtual void AddForce (Vector force) { _netforce.x += force.x; _netforce.y += force.y;_netforce.z += force.z;}
 	virtual Vector Multiply(Vector a, float b) { a.x *= b; a.y *= b; a.z *= b; return a; }
-	virtual void setGrav() { _simulateGravity = true;}
+	virtual void setGrav(bool grav) { _simulateGravity = grav;}
 	virtual float GravityForce() { return (- 9.81f * _mass); }
-	virtual float DragForce(float Vel) {if (Vel <= 0) return (0.5f*_dragCo*_airDensity*_area*Vel*Vel); if (Vel > 0) return (-0.5f * _dragCo * _airDensity * _area * Vel * Vel);}
+	virtual float DragForce(float Vel) { if (Vel <= 0) return (0.5f * _dragCo * _airDensity * _area * Vel * Vel); if (Vel > 0) return (-0.5f * _dragCo * _airDensity * _area * Vel * Vel); else return 0; }
 	virtual float FrictionForce(float force) { return (_frictionCo * force); }
 	virtual bool IsCollideable() const { return _collider != nullptr; }
 	virtual Collider* GetCollider() const { return _collider;}

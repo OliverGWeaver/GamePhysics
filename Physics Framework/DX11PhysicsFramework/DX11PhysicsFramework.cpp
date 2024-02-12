@@ -518,8 +518,8 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	GameObject* gameObject = new GameObject("Floor", planeGeometry, noSpecMaterial);
 	gameObject->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	gameObject->GetTransform()->SetScale(15.0f, 15.0f, 15.0f);
-	gameObject->GetTransform()->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
-	//gameObject->GetPhysics()->SetCollider(new SphereCollider(gameObject->GetTransform(), 1.0f));
+	gameObject->GetTransform()->SetRotation(90.0f, 0.0f, 0.0f);
+	gameObject->GetPhysics()->SetCollider(new PlaneCollider(gameObject->GetTransform()));
 	gameObject->SetTextureRV(_GroundTextureRV);
 
 	_gameObjects.push_back(gameObject);
@@ -533,6 +533,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 		gameObject->GetPhysics()->SetCollider( new SphereCollider(gameObject->GetTransform(), 1.0f));
 		gameObject->GetPhysics()->SetMass(5 + 2 * i);
 		gameObject->_rad = 1.0f;
+		
 		_gameObjects.push_back(gameObject);
 	}
 
@@ -610,9 +611,18 @@ void DX11PhysicsFramework::Update()
 	if (GetAsyncKeyState('4'))
 	{
 		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, 1.0f));
-	}	if (GetAsyncKeyState('5'))
+	}	
+	if (GetAsyncKeyState('5'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(-0.1, 0, 0));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(1, 0, 0));
+	}	
+	if (GetAsyncKeyState('6'))
+	{
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(-1, 0, 0));
+	}	
+	if (GetAsyncKeyState('7'))
+	{
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 5, 0));
 	}
 
 
@@ -657,12 +667,25 @@ void DX11PhysicsFramework::Update()
 				
 				debugClass.DebugPrintF("%f\n",depth);
 			}
-		}		
+	}
+	for (int i = 1; i < 3; i++)
+	{
+		if (_gameObjects[i]->GetPhysics()->IsCollideable() && _gameObjects[0]->GetPhysics()->IsCollideable())
+		{
+			if (_gameObjects[i]->GetPhysics()->GetCollider()->CollidesWith(*_gameObjects[0]->GetPhysics()->GetCollider()))
+			{
+				_gameObjects[i]->GetPhysics()->setGrav(false);
+			}
+			else
+			{
+				_gameObjects[i]->GetPhysics()->setGrav(true);
+			}
+		}
+	}
 	// Update objects
 	for (auto gameObject : _gameObjects)
 	{
 		gameObject->Update(accumulator);
-		
 	}
 	accumulator = -FPS60;
 	}

@@ -1,4 +1,6 @@
 #include "Vector.h"
+
+
 Vector::Vector(float r, float g, float b)
 {
 	x = r;

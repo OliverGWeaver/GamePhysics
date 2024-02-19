@@ -24,12 +24,14 @@ void PhysicsModel::Update(float deltaTime)
 	{
 		_netforce.y += GravityForce();
 	}
-	_netforce.x += DragForce(_velocity.x);
-	_netforce.y += DragForce(_velocity.y);
-	_netforce.z += DragForce(_velocity.z);
-	_netforce.x -= FrictionForce(_netforce.x);
-	_netforce.z -= FrictionForce(_netforce.z);
-
+	_netforce.x -= DragForce(_velocity.x);
+	_netforce.y -= DragForce(_velocity.y);
+	_netforce.z -= DragForce(_velocity.z);
+	if (!_simulateGravity)
+	{
+		_netforce.x -= FrictionForce(_netforce.x);
+		_netforce.z -= FrictionForce(_netforce.z);
+	}
 	_acceleration.x += _netforce.x / _mass;
 	_acceleration.y += _netforce.y / _mass;
 	_acceleration.z += _netforce.z / _mass;

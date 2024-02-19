@@ -598,31 +598,31 @@ void DX11PhysicsFramework::Update()
 	// Move gameobjects
 	if (GetAsyncKeyState('1'))
 	{
-		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, -1.0f));
+		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, -5.0f));
 	}
 	if (GetAsyncKeyState('2'))
 	{
-		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, 1.0f));
+		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, 5.0f));
 	}
 	if (GetAsyncKeyState('3'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, -1.0f));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, -5.0f));
 	}
 	if (GetAsyncKeyState('4'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, 1.0f));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, 5.0f));
 	}	
 	if (GetAsyncKeyState('5'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(1, 0, 0));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(5, 0, 0));
 	}	
 	if (GetAsyncKeyState('6'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(-1, 0, 0));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(-5, 0, 0));
 	}	
 	if (GetAsyncKeyState('7'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 5, 0));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 100, 0));
 	}
 
 
@@ -675,6 +675,7 @@ void DX11PhysicsFramework::Update()
 			if (_gameObjects[i]->GetPhysics()->GetCollider()->CollidesWith(*_gameObjects[0]->GetPhysics()->GetCollider()))
 			{
 				_gameObjects[i]->GetPhysics()->setGrav(false);
+				_gameObjects[i]->GetPhysics()->SetVelocity(_gameObjects[i]->GetPhysics()->GetVelocity().x, 0, _gameObjects[i]->GetPhysics()->GetVelocity().z);
 			}
 			else
 			{

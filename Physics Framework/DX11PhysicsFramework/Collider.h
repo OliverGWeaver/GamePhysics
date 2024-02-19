@@ -3,6 +3,7 @@
 #pragma once
 class SphereCollider;
 class PlaneCollider;
+class AABB;
 class Collider abstract
 {
 protected:
@@ -14,6 +15,7 @@ public:
 	virtual bool CollidesWith(Collider& other) = 0;
 	virtual bool CollidesWith(SphereCollider& other) = 0;
 	virtual bool CollidesWith(PlaneCollider& other) = 0;
+	virtual bool CollidesWith(AABB& other) = 0;
 
 	Vector GetPosition() const { return _tf->GetPosition(); }
 };
@@ -36,6 +38,7 @@ public:
 	{
 		return true;
 	}
+	virtual bool CollidesWith(AABB& other) override;
 	float CheckRadius() const { return _rad; }
 	
 };
@@ -48,8 +51,25 @@ public:
 	virtual bool CollidesWith(Collider& other) override { return other.CollidesWith(*this); }
 	virtual bool CollidesWith(SphereCollider& other) override
 	{
-		Vector Pos = other.GetPosition().y - GetPosition().y;
-		return(distance < other.CheckRadius());
+		float Pos = other.GetPosition().y - GetPosition().y;
+		return(Pos <= other.CheckRadius());
+	}
+	virtual bool CollidesWith(PlaneCollider& other) override { return false; }
+};
+class AABB : public Collider
+{
+	Vector halfExtenets;
+	Vector Extents = halfExtenets*2;
+	Vector minCorner = (GetPosition() - halfExtenets);
+	Vector maxCorner = (GetPosition()+halfExtenets);
+public:
+	AABB(Transform* tf, float halfx,float halfy, float halfz) : Collider(tf) { halfExtenets = Vector(halfx,halfy,halfz); }
+
+	virtual bool CollidesWith(Collider& other) override { return other.CollidesWith(*this); }
+	virtual bool CollidesWith(SphereCollider& other) override
+	{
+		float Pos = other.GetPosition().y - GetPosition().y;
+		return(Pos <= other.CheckRadius());
 	}
 	virtual bool CollidesWith(PlaneCollider& other) override { return false; }
 };

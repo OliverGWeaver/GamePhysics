@@ -48,8 +48,7 @@ public:
 	virtual bool CollidesWith(Collider& other) override { return other.CollidesWith(*this); }
 	virtual bool CollidesWith(SphereCollider& other) override
 	{
-		Vector Pos = other.GetPosition() - GetPosition();
-		float distance = Pos.Mag(Pos);
+		Vector Pos = other.GetPosition().y - GetPosition().y;
 		return(distance < other.CheckRadius());
 	}
 	virtual bool CollidesWith(PlaneCollider& other) override { return false; }

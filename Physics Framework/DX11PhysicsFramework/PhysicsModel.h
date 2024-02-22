@@ -1,6 +1,7 @@
 #include "Transform.h"
 #include "Debug.h"
 #include "Collider.h"
+#include <cmath>
 
 #pragma once
 
@@ -20,6 +21,7 @@ protected:
 	float _area = 1.0f;
 	float _SfrictionCo = 0.65f;
 	float _DfrictionCo = 0.40f;
+	XMFLOAT3X3 _intertiaTensor;
 public:
 	PhysicsModel()= default;
 	PhysicsModel(Transform* transform);
@@ -51,5 +53,8 @@ public:
 	virtual void ApllyImpulse(Vector impulse) { _velocity =_velocity + impulse; }
 	virtual float GetMass() { return _mass; }
 	virtual void SetMass(float a) { _mass = a; }
+
+	virtual void AddRelativeForce(Vector force, Vector point) = 0;
+	XMFLOAT3X3 MakeInertiaTensor(SphereCollider a);
 };
 

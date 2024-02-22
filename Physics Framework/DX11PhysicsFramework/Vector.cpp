@@ -23,7 +23,7 @@ Vector Vector::Cross(Vector a, Vector b)
 {
 	Vector cross;
 	cross.x = (a.y * b.z - a.z * b.y);
-	cross.y = (a.x * b.z - a.z * b.x);
+	cross.y = (-a.x * b.z + a.z * b.x);
 	cross.z = (a.x * b.y - a.y * b.x);
 	return cross;
 }

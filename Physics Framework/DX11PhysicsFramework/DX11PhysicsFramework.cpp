@@ -530,7 +530,16 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 		gameObject->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 		gameObject->GetTransform()->SetPosition(-2.0f + (i * 2.5f), 1.0f, 10.0f);
 		gameObject->SetTextureRV(_StoneTextureRV);
-		gameObject->GetPhysics()->SetCollider( new SphereCollider(gameObject->GetTransform(), 1.0f));
+		
+		if (i == 0)
+		{
+			gameObject->GetPhysics()->SetCollider(new AABB(gameObject->GetTransform(), 1.0f, 1.0f, 1.0f));
+		}
+		else
+		{
+			gameObject->GetPhysics()->SetCollider(new SphereCollider(gameObject->GetTransform(), 1.0f));
+			gameObject->GetPhysics()->MakeInertiaTensor(SphereCollider(gameObject->GetTransform(), 1.0f));
+		}
 		gameObject->GetPhysics()->SetMass(5 + 2 * i);
 		gameObject->_rad = 1.0f;
 		
@@ -612,11 +621,11 @@ void DX11PhysicsFramework::Update()
 	{
 		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, 5.0f));
 	}	
-	if (GetAsyncKeyState('5'))
+	if (GetAsyncKeyState('6'))
 	{
 		_gameObjects[2]->GetPhysics()->AddForce(Vector(5, 0, 0));
 	}	
-	if (GetAsyncKeyState('6'))
+	if (GetAsyncKeyState('5'))
 	{
 		_gameObjects[2]->GetPhysics()->AddForce(Vector(-5, 0, 0));
 	}	
@@ -624,6 +633,11 @@ void DX11PhysicsFramework::Update()
 	{
 		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 100, 0));
 	}
+	if (GetAsyncKeyState('8'))
+	{
+		_gameObjects[2]->GetPhysics()->AddRelativeForce(Vector(0, 100, 0),Vector(1,1,-1));
+	}
+	
 
 
 	// Update camera
@@ -738,7 +752,7 @@ void DX11PhysicsFramework::Draw()
 		_cbData.surface.SpecularMtrl = material.specular;
 
 		// Set world matrix
-		_cbData.World = XMMatrixTranspose(gameObject->GetWorldMatrix());
+		_cbData.World = XMMatrixTranspose(gameObject->GetTransform()->GetWorldMatrix());
 
 		// Set texture
 		if (gameObject->HasTexture())

@@ -1,5 +1,6 @@
 #include "Transform.h"
 
+
 #pragma once
 class SphereCollider;
 class PlaneCollider;
@@ -55,9 +56,12 @@ public:
 		return(Pos <= other.CheckRadius());
 	}
 	virtual bool CollidesWith(PlaneCollider& other) override { return false; }
+	virtual bool CollidesWith(AABB& other) override; 
 };
+
 class AABB : public Collider
 {
+protected:
 	Vector halfExtenets;
 	Vector Extents = halfExtenets*2;
 	Vector minCorner = (GetPosition() - halfExtenets);
@@ -67,9 +71,35 @@ public:
 
 	virtual bool CollidesWith(Collider& other) override { return other.CollidesWith(*this); }
 	virtual bool CollidesWith(SphereCollider& other) override
-	{
-		float Pos = other.GetPosition().y - GetPosition().y;
-		return(Pos <= other.CheckRadius());
+	{	
+		float x = max(GetPosition().x - halfExtenets.x, min(other.GetPosition().x, GetPosition().x + halfExtenets.x));
+		float y = max(GetPosition().y - halfExtenets.y, min(other.GetPosition().y, GetPosition().y + halfExtenets.y));
+		float z = max(GetPosition().z - halfExtenets.z, min(other.GetPosition().z, GetPosition().z + halfExtenets.z));
+
+		float distance = sqrtf((x - other.GetPosition().x) * (x - other.GetPosition().x) + (y - other.GetPosition().y) * (y - other.GetPosition().y) + (z - other.GetPosition().z) * (z - other.GetPosition().z));
+		return(distance < other.CheckRadius());
 	}
 	virtual bool CollidesWith(PlaneCollider& other) override { return false; }
+	virtual bool CollidesWith(AABB& other) override
+	{
+		float combinedx = other.GetHalfExtenets().x + halfExtenets.x;
+		float combinedy = other.GetHalfExtenets().y + halfExtenets.y;
+		float combinedz = other.GetHalfExtenets().z + halfExtenets.z;
+		Vector Pos = other.GetPosition() - GetPosition();
+		float distance = Pos.Mag(Pos);
+		if(distance > combinedx)
+		{
+			return(false);
+		}
+		if(distance > combinedy)
+		{
+			return(false);
+		}
+		if (distance > combinedz)
+		{
+			return(false);
+		}
+		return true;
+	}
+	Vector GetHalfExtenets() { return halfExtenets; }
 };

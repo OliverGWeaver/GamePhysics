@@ -20,19 +20,8 @@ GameObject::~GameObject()
 
 void GameObject::Update(float dt)
 {
-	// Calculate world matrix
-	XMVECTOR quaternion = XMVectorSet(_transform->GetOrientation().GetVector().x, _transform->GetOrientation().GetVector().y, _transform->GetOrientation().GetVector().z, _transform->GetOrientation().GetScalar());
 
-	XMMATRIX scale = XMMatrixScaling(_transform->GetScale().x, _transform->GetScale().y, _transform->GetScale().z);
-	XMMATRIX rotation = XMMatrixRotationQuaternion(quaternion);
-	XMMATRIX translation = XMMatrixTranslation(_transform->GetPosition().x, _transform->GetPosition().y, _transform->GetPosition().z);
-
-	XMStoreFloat4x4(&_world, scale * rotation * translation);
-	if (_parent != nullptr)
-	{
-		XMStoreFloat4x4(&_world, this->GetWorldMatrix() * _parent->GetWorldMatrix());
-	}
-
+	_transform->Update(dt);
 	_physics->Update(dt);
 }
 

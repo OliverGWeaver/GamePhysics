@@ -48,3 +48,20 @@ void PhysicsModel::Update(float deltaTime)
 	_acceleration = Vector(0, 0, 0);
 
 }
+
+XMFLOAT3X3 PhysicsModel::MakeInertiaTensor(SphereCollider a)
+{
+	_intertiaTensor._11 = 2.0f / 5.0f * _mass * a.CheckRadius() * a.CheckRadius();
+	_intertiaTensor._12 = 0;
+	_intertiaTensor._13 = 0;
+
+	_intertiaTensor._21 = 0;
+	_intertiaTensor._22 = 2.0f / 5.0f * _mass * a.CheckRadius() * a.CheckRadius();
+	_intertiaTensor._23 = 0;
+
+	_intertiaTensor._31 = 0;
+	_intertiaTensor._32 = 0;
+	_intertiaTensor._33 = 2.0f / 5.0f * _mass * a.CheckRadius() * a.CheckRadius();
+
+	return _intertiaTensor;
+}

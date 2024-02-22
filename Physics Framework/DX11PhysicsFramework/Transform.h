@@ -26,9 +26,16 @@ public:
 	Quaternion GetOrientation() const { return _qRotation; }
 
 	void Move(Vector direction);
+
+	void Update(float dt);
+	XMMATRIX GetWorldMatrix() const { return XMLoadFloat4x4(&_world); }
+
 protected:
 	Vector _position;
 	Quaternion _qRotation;
 	Vector _scale;
+
+	XMFLOAT4X4 _world;
+	Transform* _parent = nullptr;
 };
 

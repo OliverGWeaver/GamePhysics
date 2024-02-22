@@ -45,7 +45,7 @@ public:
 	// Rendering information
 	Geometry GetGeometryData() const { return _geometry; }
 	Material GetMaterial() const { return _material; }
-	XMMATRIX GetWorldMatrix() const { return XMLoadFloat4x4(&_world); }
+	
 	Transform* GetTransform() { return _transform; }
 	Rigidbody* GetPhysics() { return _physics; }
 

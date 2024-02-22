@@ -1,49 +1,73 @@
-﻿  Collider.cpp
+﻿  appearance.cpp
+  Collider.cpp
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(195,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(200,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(35,43): warning C4100: 'other': unreferenced formal parameter
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(54,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(38,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(58,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(82,43): warning C4100: 'other': unreferenced formal parameter
+  Debug.cpp
   DX11PhysicsFramework.cpp
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(195,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(200,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(35,43): warning C4100: 'other': unreferenced formal parameter
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(54,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(38,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(58,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(82,43): warning C4100: 'other': unreferenced formal parameter
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\DX11PhysicsFramework.cpp(84,75): warning C4100: 'nCmdShow': unreferenced formal parameter
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\DX11PhysicsFramework.cpp(534,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  GameObject.cpp
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(195,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(200,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(35,43): warning C4100: 'other': unreferenced formal parameter
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(54,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\DX11PhysicsFramework.cpp(543,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Camera.cpp
+  DDSTextureLoader.cpp
   Main.cpp
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(195,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(200,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(35,43): warning C4100: 'other': unreferenced formal parameter
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(54,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(38,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(58,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(82,43): warning C4100: 'other': unreferenced formal parameter
+  GameObject.cpp
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(195,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(200,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(38,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(58,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(82,43): warning C4100: 'other': unreferenced formal parameter
+  OBJLoader.cpp
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\OBJLoader.cpp(32,18): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\OBJLoader.cpp(145,17): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\OBJLoader.cpp(146,23): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\OBJLoader.cpp(174,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\OBJLoader.cpp(198,33): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\OBJLoader.cpp(213,40): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\OBJLoader.cpp(228,32): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\OBJLoader.cpp(246,32): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\OBJLoader.cpp(254,42): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
   ParticleModel.cpp
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(195,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(200,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(35,43): warning C4100: 'other': unreferenced formal parameter
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(54,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(38,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(58,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(82,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\ParticleModel.h(5,53): warning C4100: 'point': unreferenced formal parameter
   PhysicsModel.cpp
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(195,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(200,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(35,43): warning C4100: 'other': unreferenced formal parameter
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(54,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(38,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(58,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(82,43): warning C4100: 'other': unreferenced formal parameter
   Quaternion.cpp
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(195,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(200,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   Rigidbody.cpp
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(195,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(200,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(35,43): warning C4100: 'other': unreferenced formal parameter
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(54,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(38,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(58,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(82,43): warning C4100: 'other': unreferenced formal parameter
+  Timer.cpp
   Transform.cpp
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(195,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(200,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Transform.cpp(18,30): warning C4100: 'dt': unreferenced formal parameter
   Vector.cpp
 C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Vector.cpp(13,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   Generating Code...
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\PhysicsModel.h(44): warning C4715: 'PhysicsModel::DragForce': not all control paths return a value
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\PhysicsModel.h(44): warning C4715: 'PhysicsModel::DragForce': not all control paths return a value
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\PhysicsModel.h(46): warning C4715: 'PhysicsModel::DragForce': not all control paths return a value
+C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\PhysicsModel.h(46): warning C4715: 'PhysicsModel::DragForce': not all control paths return a value
   DX11PhysicsFramework.vcxproj -> C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\x64\Debug\DX11PhysicsFramework.exe

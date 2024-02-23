@@ -57,4 +57,21 @@ struct MeshData
 	UINT VBOffset;
 	UINT IndexCount;
 };
+
+struct Geometry
+{
+	ID3D11Buffer* vertexBuffer;
+	ID3D11Buffer* indexBuffer;
+	int numberOfIndices;
+
+	UINT vertexBufferStride;
+	UINT vertexBufferOffset;
+};
+
+struct Material
+{
+	XMFLOAT4 diffuse;
+	XMFLOAT4 ambient;
+	XMFLOAT4 specular;
+};
 #define M_PI 3.14159265358979323846

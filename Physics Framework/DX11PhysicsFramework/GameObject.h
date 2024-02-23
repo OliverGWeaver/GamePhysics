@@ -7,26 +7,12 @@
 #include "Transform.h"
 #include "PhysicsModel.h"
 #include "Rigidbody.h"
+#include "appearance.h"
 
 using namespace DirectX;
 using namespace std;
 
-struct Geometry
-{
-	ID3D11Buffer* vertexBuffer;
-	ID3D11Buffer* indexBuffer;
-	int numberOfIndices;
 
-	UINT vertexBufferStride;
-	UINT vertexBufferOffset;
-};
-
-struct Material
-{
-	XMFLOAT4 diffuse;
-	XMFLOAT4 ambient;
-	XMFLOAT4 specular;
-};
 
 class GameObject
 {
@@ -43,19 +29,16 @@ public:
 
 
 	// Rendering information
-	Geometry GetGeometryData() const { return _geometry; }
-	Material GetMaterial() const { return _material; }
+
 	
 	Transform* GetTransform() { return _transform; }
 	Rigidbody* GetPhysics() { return _physics; }
+	appearance* GetAppearance() { return _appearance; }
 
-	void SetTextureRV(ID3D11ShaderResourceView * textureRV) { _textureRV = textureRV; }
-	ID3D11ShaderResourceView* const* GetTextureRV() { return &_textureRV; }
-	bool HasTexture() const { return _textureRV ? true : false; }
 
 
 	void Update(float dt);
-	void Draw(ID3D11DeviceContext * pImmediateContext);
+	
 	float _rad;
 private:
 	GameObject* _parent = nullptr;
@@ -63,11 +46,10 @@ private:
 	string _type;
 	XMFLOAT4X4 _world;
 
-	Geometry _geometry;
-	Material _material;
+	appearance* _appearance;
 	Transform* _transform;
 	Rigidbody* _physics;
 
-	ID3D11ShaderResourceView* _textureRV = nullptr;
+	
 };
 

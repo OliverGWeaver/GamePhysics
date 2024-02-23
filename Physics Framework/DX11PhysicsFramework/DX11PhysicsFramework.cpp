@@ -520,7 +520,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	gameObject->GetTransform()->SetScale(15.0f, 15.0f, 15.0f);
 	gameObject->GetTransform()->SetRotation(90.0f, 0.0f, 0.0f);
 	gameObject->GetPhysics()->SetCollider(new PlaneCollider(gameObject->GetTransform()));
-	gameObject->SetTextureRV(_GroundTextureRV);
+	gameObject->GetAppearance()->SetTextureRV(_GroundTextureRV);
 
 	_gameObjects.push_back(gameObject);
 
@@ -529,7 +529,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 		gameObject = new GameObject("Cube " + i, cubeGeometry, shinyMaterial);
 		gameObject->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 		gameObject->GetTransform()->SetPosition(-2.0f + (i * 2.5f), 1.0f, 10.0f);
-		gameObject->SetTextureRV(_StoneTextureRV);
+		gameObject->GetAppearance()->SetTextureRV(_StoneTextureRV);
 		
 		if (i == 0)
 		{
@@ -549,7 +549,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	gameObject = new GameObject("Donut", herculesGeometry, shinyMaterial);
 	gameObject->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 	gameObject->GetTransform()->SetPosition(-5.0f, 0.5f, 10.0f);
-	gameObject->SetTextureRV(_StoneTextureRV);
+	gameObject->GetAppearance()->SetTextureRV(_StoneTextureRV);
 	
 	_gameObjects.push_back(gameObject);
 
@@ -659,29 +659,33 @@ void DX11PhysicsFramework::Update()
 	accumulator += deltaTime;
 	while (accumulator >= FPS60)
 	{
-	if (_gameObjects[1]->GetPhysics()->IsCollideable() && _gameObjects[2]->GetPhysics()->IsCollideable())
-		{
-			if (_gameObjects[1]->GetPhysics()->GetCollider()->CollidesWith(*_gameObjects[2]->GetPhysics()->GetCollider()))
-			{
-				debugClass.DebugPrintF("collide\n");
-				Vector CollisionNorm = _gameObjects[1]->GetTransform()->GetPosition() - _gameObjects[2]->GetTransform()->GetPosition();
-				CollisionNorm = CollisionNorm.Normal(CollisionNorm);
-				float depth = _gameObjects[1]->GetTransform()->GetPosition().Mag(_gameObjects[2]->GetTransform()->GetPosition() - _gameObjects[1]->GetTransform()->GetPosition()) - (_gameObjects[2]->_rad + _gameObjects[1]->_rad);
-				float coRest = 0.89;
-				float invMassA = 1 / _gameObjects[1]->GetPhysics()->GetMass();
-				float invMassB = 1 / _gameObjects[2]->GetPhysics()->GetMass();
-				Vector RelVelocity = _gameObjects[1]->GetPhysics()->GetVelocity() - _gameObjects[2]->GetPhysics()->GetVelocity();
-				float vj = -(1 + coRest) * CollisionNorm.Dot( RelVelocity,CollisionNorm);
-				float J = vj/ (invMassA + invMassB);
-				debugClass.DebugPrintF("%f\n",J);
-				_gameObjects[1]->GetPhysics()->ApllyImpulse(CollisionNorm * (invMassA * J)*-depth);
-				_gameObjects[1]->GetPhysics()->ApllyImpulse(CollisionNorm * (invMassA * J));
-				_gameObjects[2]->GetPhysics()->ApllyImpulse(CollisionNorm * (-invMassB * J)*-depth);
-				_gameObjects[2]->GetPhysics()->ApllyImpulse(CollisionNorm * (-invMassB * J));
-				
-				debugClass.DebugPrintF("%f\n",depth);
+		for (int i = 1; i < 4; i++) {
+			for (int k = i + 1; k < 5; k++) {
+				if (_gameObjects[i]->GetPhysics()->IsCollideable() && _gameObjects[k]->GetPhysics()->IsCollideable())
+				{
+					if (_gameObjects[i]->GetPhysics()->GetCollider()->CollidesWith(*_gameObjects[k]->GetPhysics()->GetCollider()))
+					{
+						debugClass.DebugPrintF("collide\n");
+						Vector CollisionNorm = _gameObjects[i]->GetTransform()->GetPosition() - _gameObjects[k]->GetTransform()->GetPosition();
+						CollisionNorm = CollisionNorm.Normal(CollisionNorm);
+						float depth = _gameObjects[i]->GetTransform()->GetPosition().Mag(_gameObjects[k]->GetTransform()->GetPosition() - _gameObjects[i]->GetTransform()->GetPosition()) - (_gameObjects[k]->_rad + _gameObjects[i]->_rad);
+						float coRest = 0.89;
+						float invMassA = 1 / _gameObjects[i]->GetPhysics()->GetMass();
+						float invMassB = 1 / _gameObjects[k]->GetPhysics()->GetMass();
+						Vector RelVelocity = _gameObjects[i]->GetPhysics()->GetVelocity() - _gameObjects[k]->GetPhysics()->GetVelocity();
+						float vj = -(1 + coRest) * CollisionNorm.Dot(RelVelocity, CollisionNorm);
+						float J = vj / (invMassA + invMassB);
+						debugClass.DebugPrintF("%f\n", J);
+						_gameObjects[i]->GetPhysics()->ApllyImpulse(CollisionNorm * (invMassA * J) * -depth);
+						_gameObjects[i]->GetPhysics()->ApllyImpulse(CollisionNorm * (invMassA * J));
+						_gameObjects[k]->GetPhysics()->ApllyImpulse(CollisionNorm * (-invMassB * J) * -depth);
+						_gameObjects[k]->GetPhysics()->ApllyImpulse(CollisionNorm * (-invMassB * J));
+
+						debugClass.DebugPrintF("%f\n", depth);
+					}
+				}
 			}
-	}
+		}
 	for (int i = 1; i < 3; i++)
 	{
 		if (_gameObjects[i]->GetPhysics()->IsCollideable() && _gameObjects[0]->GetPhysics()->IsCollideable())
@@ -744,7 +748,7 @@ void DX11PhysicsFramework::Draw()
 	for (auto gameObject : _gameObjects)
 	{
 		// Get render material
-		Material material = gameObject->GetMaterial();
+		Material material = gameObject->GetAppearance()->GetMaterial();
 
 		// Copy material to shader
 		_cbData.surface.AmbientMtrl = material.ambient;
@@ -755,9 +759,9 @@ void DX11PhysicsFramework::Draw()
 		_cbData.World = XMMatrixTranspose(gameObject->GetTransform()->GetWorldMatrix());
 
 		// Set texture
-		if (gameObject->HasTexture())
+		if (gameObject->GetAppearance()->HasTexture())
 		{
-			_immediateContext->PSSetShaderResources(0, 1, gameObject->GetTextureRV());
+			_immediateContext->PSSetShaderResources(0, 1, gameObject->GetAppearance()->GetTextureRV());
 			_cbData.HasTexture = 1.0f;
 		}
 		else
@@ -772,7 +776,7 @@ void DX11PhysicsFramework::Draw()
 		_immediateContext->Unmap(_constantBuffer, 0);
 
 		// Draw object
-		gameObject->Draw(_immediateContext);
+		gameObject->GetAppearance()->Draw(_immediateContext);
 	}
 
     //

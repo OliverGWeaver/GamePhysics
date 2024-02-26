@@ -1,9 +1,9 @@
 ﻿  DX11PhysicsFramework.cpp
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(195,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(200,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(38,43): warning C4100: 'other': unreferenced formal parameter
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(58,43): warning C4100: 'other': unreferenced formal parameter
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(82,43): warning C4100: 'other': unreferenced formal parameter
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\DX11PhysicsFramework.cpp(84,75): warning C4100: 'nCmdShow': unreferenced formal parameter
-C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\DX11PhysicsFramework.cpp(543,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  DX11PhysicsFramework.vcxproj -> C:\Users\w011657m\Documents\GitHub\GamePhysics\Physics Framework\x64\Debug\DX11PhysicsFramework.exe
+C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(195,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Quaternion.h(200,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(38,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(58,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\Collider.h(82,43): warning C4100: 'other': unreferenced formal parameter
+C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\DX11PhysicsFramework.cpp(84,75): warning C4100: 'nCmdShow': unreferenced formal parameter
+C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\DX11PhysicsFramework\DX11PhysicsFramework.cpp(545,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  DX11PhysicsFramework.vcxproj -> C:\Users\w011657m.STUDENT\Documents\GitHub\GamePhysics\Physics Framework\x64\Debug\DX11PhysicsFramework.exe

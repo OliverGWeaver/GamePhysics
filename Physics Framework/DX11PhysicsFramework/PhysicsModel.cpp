@@ -63,5 +63,22 @@ XMFLOAT3X3 PhysicsModel::MakeInertiaTensor(SphereCollider a)
 	_intertiaTensor._32 = 0;
 	_intertiaTensor._33 = 2.0f / 5.0f * _mass * a.CheckRadius() * a.CheckRadius();
 
+	_Tensor = true;
+	return _intertiaTensor;
+}XMFLOAT3X3 PhysicsModel::MakeInertiaTensor(AABB a)
+{
+	_intertiaTensor._11 = 1.0f / 12.0f * _mass * ((a.GetHalfExtenets().y * a.GetHalfExtenets().y)+(a.GetHalfExtenets().z*a.GetHalfExtenets().z));
+	_intertiaTensor._12 = 0;
+	_intertiaTensor._13 = 0;
+
+	_intertiaTensor._21 = 0;
+	_intertiaTensor._22 = 1.0f / 12.0f * _mass * ((a.GetHalfExtenets().x * a.GetHalfExtenets().x) + (a.GetHalfExtenets().z * a.GetHalfExtenets().z));
+	_intertiaTensor._23 = 0;
+
+	_intertiaTensor._31 = 0;
+	_intertiaTensor._32 = 0;
+	_intertiaTensor._33 = 1.0f / 12.0f * _mass * ((a.GetHalfExtenets().x * a.GetHalfExtenets().x) + (a.GetHalfExtenets().y * a.GetHalfExtenets().y));
+
+	_Tensor = true;
 	return _intertiaTensor;
 }

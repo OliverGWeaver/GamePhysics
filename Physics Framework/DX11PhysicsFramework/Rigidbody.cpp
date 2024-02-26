@@ -35,7 +35,7 @@ Rigidbody::Rigidbody(Transform* transform, float mass)
 //	return _intertiaTensor;
 //}
 
-void Rigidbody::CalcAVel(float dt)
+Vector Rigidbody::CalcAVel(float dt)
 {
 	XMMATRIX invMat = XMMatrixInverse(nullptr, XMLoadFloat3x3(&_intertiaTensor));
 	XMVECTOR torque = XMVectorSet(_tourque.x, _tourque.y, _tourque.z,0);
@@ -45,12 +45,18 @@ void Rigidbody::CalcAVel(float dt)
 	XMStoreFloat3(&xmfAngleAccel, AngleAccel);
 	_aAcel = Vector(xmfAngleAccel.x, xmfAngleAccel.y, xmfAngleAccel.z);
 
-	_aVel += _aAcel * dt;
+	Vector tempAVel = _aAcel * dt;
+	return tempAVel;
 }
 
 void Rigidbody::Update(float deltaTime)
 {
-	CalcAVel(deltaTime);
+	if (_Tensor)
+	{
+		_aVel.x += CalcAVel(deltaTime).x;
+		_aVel.y += CalcAVel(deltaTime).y;
+		_aVel.z += CalcAVel(deltaTime).z;
+	}
 	Vector position = _transform->GetPosition();
 	if (_simulateGravity)
 	{

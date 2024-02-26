@@ -22,6 +22,7 @@ protected:
 	float _SfrictionCo = 0.65f;
 	float _DfrictionCo = 0.40f;
 	XMFLOAT3X3 _intertiaTensor;
+	bool _Tensor = false;
 public:
 	PhysicsModel()= default;
 	PhysicsModel(Transform* transform);
@@ -56,5 +57,6 @@ public:
 
 	virtual void AddRelativeForce(Vector force, Vector point) = 0;
 	XMFLOAT3X3 MakeInertiaTensor(SphereCollider a);
+	XMFLOAT3X3 MakeInertiaTensor(AABB a);
 };
 

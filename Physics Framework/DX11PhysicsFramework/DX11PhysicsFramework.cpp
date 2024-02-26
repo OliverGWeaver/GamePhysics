@@ -521,6 +521,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	gameObject->GetTransform()->SetRotation(90.0f, 0.0f, 0.0f);
 	gameObject->GetPhysics()->SetCollider(new PlaneCollider(gameObject->GetTransform()));
 	gameObject->GetAppearance()->SetTextureRV(_GroundTextureRV);
+	gameObject->GetPhysics()->setGrav(false);
 
 	_gameObjects.push_back(gameObject);
 
@@ -534,6 +535,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 		if (i == 0)
 		{
 			gameObject->GetPhysics()->SetCollider(new AABB(gameObject->GetTransform(), 1.0f, 1.0f, 1.0f));
+			gameObject->GetPhysics()->MakeInertiaTensor(AABB(gameObject->GetTransform(), 1.0f, 1.0f, 1.0f));
 		}
 		else
 		{
@@ -607,35 +609,39 @@ void DX11PhysicsFramework::Update()
 	// Move gameobjects
 	if (GetAsyncKeyState('1'))
 	{
-		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, -5.0f));
+		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, -0.5f));
 	}
 	if (GetAsyncKeyState('2'))
 	{
-		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, 5.0f));
+		_gameObjects[1]->GetPhysics()->AddForce(Vector(0, 0, 0.5f));
 	}
 	if (GetAsyncKeyState('3'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, -5.0f));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, -0.5f));
 	}
 	if (GetAsyncKeyState('4'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, 5.0f));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 0, 0.5f));
 	}	
 	if (GetAsyncKeyState('6'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(5, 0, 0));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(0.5f, 0, 0));
 	}	
 	if (GetAsyncKeyState('5'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(-5, 0, 0));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(-0.5f, 0, 0));
 	}	
 	if (GetAsyncKeyState('7'))
 	{
-		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 100, 0));
+		_gameObjects[2]->GetPhysics()->AddForce(Vector(0, 10, 0));
 	}
 	if (GetAsyncKeyState('8'))
 	{
-		_gameObjects[2]->GetPhysics()->AddRelativeForce(Vector(0, 100, 0),Vector(1,1,-1));
+		_gameObjects[2]->GetPhysics()->AddRelativeForce(Vector(0, 10, 0),Vector(0,1,-1));
+	}	
+	if (GetAsyncKeyState('9'))
+	{
+		_gameObjects[1]->GetPhysics()->AddRelativeForce(Vector(0, 10, 0),Vector(3,1,-1));
 	}
 	
 
@@ -686,7 +692,7 @@ void DX11PhysicsFramework::Update()
 				}
 			}
 		}
-	for (int i = 1; i < 3; i++)
+	for (int i = 1; i < 5; i++)
 	{
 		if (_gameObjects[i]->GetPhysics()->IsCollideable() && _gameObjects[0]->GetPhysics()->IsCollideable())
 		{

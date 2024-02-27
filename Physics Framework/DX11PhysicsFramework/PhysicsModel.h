@@ -45,7 +45,7 @@ public:
 	virtual void setGrav(bool grav) { _simulateGravity = grav;}
 	virtual float GravityForce() { return (- 9.81f * _mass); }
 	virtual float DragForce(float Vel) { if (Vel < 0) return (-0.5f * _dragCo * _airDensity * _area * Vel * Vel); if (Vel > 0) return (0.5f * _dragCo * _airDensity * _area * Vel * Vel); }
-	virtual float FrictionForce(float force) { if (force == 0) return (_SfrictionCo * force); else return(_DfrictionCo * force); }
+	virtual float FrictionForce(float force) { if (_velocity.x == 0&& _velocity.z == 0 ) return (_SfrictionCo * force); else return(_DfrictionCo * force); }
 	
 	virtual bool IsCollideable() const { return _collider != nullptr; }
 	virtual Collider* GetCollider() const { return _collider;}
